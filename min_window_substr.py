@@ -17,7 +17,33 @@ alphabetic characters.
 '''
 
 
-def min_window(str, sub_str):
+def min_window(st, sub_str):
 
-    # Your code here
-    pass
+    end_i = len(st)
+    matches = []
+
+    while end_i >= len(sub_str):
+
+        for i in range(0, end_i):
+
+            word = st[i:end_i]
+            checker = True
+
+            for e in range(0, len(sub_str)):
+                
+                if word.count(sub_str[e]) != sub_str.count(sub_str[e]):
+
+                    checker = False
+
+            if checker == True:
+
+                matches.append(word)
+
+        end_i -= 1
+
+    matches.sort(key=len)
+
+    return matches[0]
+
+
+min_window("aabdccdbcacd", "aad")
